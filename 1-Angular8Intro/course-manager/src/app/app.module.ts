@@ -23,12 +23,6 @@ import { CourseListComponent } from './courses/course-list.component';
         path: '', redirectTo: 'courses', pathMatch: 'full'
       },
       {
-        path: 'courses', component: CourseListComponent
-      },
-      {
-        path: 'courses/info/:id', component: CourseListComponent
-      },
-      {
         path: '**', component: Error404Component
       }
     ]),
