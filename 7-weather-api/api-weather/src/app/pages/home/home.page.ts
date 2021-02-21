@@ -4,14 +4,20 @@ import { Store, select } from '@ngrx/store';
 
 import * as fromHomeActions from './state/home.actions';
 import * as fromHomeSelectors from './state/home.selectors';
+import { CityWeather } from 'src/app/shared/models/weather.model'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'erm-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.css']
 })
+
 export class HomePage implements OnInit {
 
+  cityWeather$: Observable<CityWeather>;
+  loading$: Observable<boolean>;
+  error$: Observable<boolean>;
   searchControl: FormControl;
   text: string;
 
@@ -19,8 +25,10 @@ export class HomePage implements OnInit {
 
   ngOnInit(): void {
     this.searchControl = new FormControl('', Validators.required);
-    this.store.pipe(select(fromHomeSelectors.selectHomeText))
-    .subscribe(text => {});
+
+    this.cityWeather$ = this.store.pipe(select(fromHomeSelectors.selectCurrentWeather));
+    this.loading$ = this.store.pipe(select(fromHomeSelectors.selectCurrentWeatherLoading));
+    this.error$ = this.store.pipe(select(fromHomeSelectors.selectCurrentWeatherError));
   }
   doSearch() {
     //console.log(this.searchControl.value);
