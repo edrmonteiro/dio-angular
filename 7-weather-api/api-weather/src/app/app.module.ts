@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { EffectsModule } from '@ngrx/effects';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     HomeModule,
     BookmarksModule,
     StoreModule.forRoot({}),

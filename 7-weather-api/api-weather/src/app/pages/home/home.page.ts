@@ -20,11 +20,11 @@ export class HomePage implements OnInit {
   ngOnInit(): void {
     this.searchControl = new FormControl('', Validators.required);
     this.store.pipe(select(fromHomeSelectors.selectHomeText))
-    .subscribe(text => this.text = text);
+    .subscribe(text => {});
   }
   doSearch() {
     //console.log(this.searchControl.value);
-    const text = this.searchControl.value;
-    this.store.dispatch(fromHomeActions.changeText(text));
+    const query = this.searchControl.value
+    this.store.dispatch(fromHomeActions.loadCurrentWeather ({ query }))
   }
 }
