@@ -1,0 +1,56 @@
+
+<div>test 1</div>
+<ng-template #template> test 2</ng-template>
+<ng-container #container></ng-container>
+<div *ngIf="flag"> test3</div>
+
+<ng-template [ngIf]="flag">
+  <div>test 4</div>
+</ng-template>
+
+<ng-template [ermIf]="flag">
+  <div>test 5</div>
+</ng-template>
+
+<div *ermIf="flag"> test 6</div>
+<button (click)="onClick()">Click</button>
+
+<hr>
+<app-child [info]="template1"></app-child>
+<ng-template #template1>
+  test 7
+</ng-template>
+
+<app-child [info]="template2"></app-child>
+<ng-template let-item="item" #template2>
+  {{ item }}
+</ng-template>
+
+<hr>
+<div *ngFor="let item of list; let index = index; let last = last"> {{item}} {{last}}</div>
+
+<ng-template ngFor [ngForOf]="list" let-item >
+  <div>{{ item }}</div>
+</ng-template>
+
+<ng-template ermFor [ermForFrom]="list" let-item let-index="index">
+  {{item}}
+</ng-template>
+
+<div *ermFor="let item from list">
+  {{item}}
+</div>
+
+<hr>
+<div [ngSwitch]="value">
+  <div *ngSwitchCase="'A'">AAA</div>
+  <div *ngSwitchCase="'B'">BBB</div>
+</div>
+
+<div [ermSwitch]="value">
+  <div *ermSwitchCase="'A'">AAA</div>
+  <div *ermSwitchCase="'B'">BBB</div>
+</div>
+
+<button (click)="toggle()">Click</button>
+
