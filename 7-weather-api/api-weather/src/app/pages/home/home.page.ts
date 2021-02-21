@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'erm-home',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
+  searchControl: FormControl;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.searchControl = new FormControl('', Validators.required);
+  }
+  doSearch() {
+    console.log(this.searchControl.value)
   }
 
 }
