@@ -8,6 +8,7 @@ import { PortalOutlet, DomPortalOutlet, ComponentPortal } from '@angular/cdk/por
 import * as fromHomeActions from '../../state/home.actions';
 import * as fromHomeSelectors from '../../state/home.selectors';
 import * as fromBookmarksSelectors from '../../../bookmarks/state/bookmarks.selectors';
+import * as fromConfigSelectors from '../../../../shared/state/config/config.selectors';
 import { CityWeather } from 'src/app/shared/models/weather.model'
 import { Bookmark } from 'src/app/shared/models/bookmark.model';
 import { Units } from 'src/app/shared/models/units.enum';
@@ -34,6 +35,7 @@ export class HomePage implements OnInit, OnDestroy {
   searchControlWithAutocomplete: FormControl;
 
   unit$: Observable<Units>;
+
   private componentDestroyed$ = new Subject();
 
   private portalOutlet: PortalOutlet;
@@ -74,7 +76,12 @@ export class HomePage implements OnInit, OnDestroy {
           return false;
         }),
       );
+      this.unit$ = this.store.pipe(select(fromConfigSelectors.selectUnitConfig));
+      this.setupPortal();
   }
+
+
+
   ngOnDestroy() {
     this.componentDestroyed$.next();
     this.componentDestroyed$.unsubscribe();

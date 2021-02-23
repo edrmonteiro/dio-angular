@@ -1,4 +1,5 @@
-import { createAction, props } from "@ngrx/store";
+import { createAction, props } from '@ngrx/store';
+
 import { Bookmark } from 'src/app/shared/models/bookmark.model';
 
 export const loadCurrentWeather = createAction(

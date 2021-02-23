@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import * as moment from 'moment';
-import 'moment/locale/pt-br';
+//import 'moment/locale/pt-br';
 
 @Component({
   selector: 'erm-root',
@@ -9,6 +9,6 @@ import 'moment/locale/pt-br';
 })
 export class AppComponent {
   constructor() {
-    moment.locale('pt-br');
+    //moment.locale('pt-br');
   }
 }

@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CityWeather } from 'src/app/shared/models/weather.model';
+import { Units } from 'src/app/shared/models/units.enum';
 
 @Component({
   selector: 'erm-current-weather',
@@ -11,6 +12,8 @@ export class CurrentWeatherComponent{
 
 
   @Input() cityWeather: CityWeather;
+  @Input() isFavorite: boolean;
+  @Input() unit: Units;
   @Output() toggleBookmark = new EventEmitter();
 
   get cityName():string {
