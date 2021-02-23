@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BookmarksPage } from './bookmarks.page';
+import { UnitSelectorComponent } from './unit-selector.component';
 
-describe('BookmarksPage', () => {
-  let component: BookmarksPage;
-  let fixture: ComponentFixture<BookmarksPage>;
+describe('UnitSelectorComponent', () => {
+  let component: UnitSelectorComponent;
+  let fixture: ComponentFixture<UnitSelectorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BookmarksPage ]
+      declarations: [ UnitSelectorComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BookmarksPage);
+    fixture = TestBed.createComponent(UnitSelectorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

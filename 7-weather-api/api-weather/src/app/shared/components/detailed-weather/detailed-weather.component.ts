@@ -4,7 +4,7 @@ import { Units } from '../../models/units.enum';
 import { unitToSymbol } from '../../utils/units.utils';
 
 @Component({
-  selector: 'jv-detailed-weather',
+  selector: 'erm-detailed-weather',
   templateUrl: './detailed-weather.component.html',
   styleUrls: ['./detailed-weather.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -8,6 +8,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { HomeEffects } from './state/home.effects';
 import { ComponentsModule } from '../../shared/components/components.module';
 import { CurrentWeatherComponent } from './components/current-weather/current-weather.component';
+import { UnitSelectorComponent } from './containers/unit-selector/unit-selector.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -15,6 +17,7 @@ import { CurrentWeatherComponent } from './components/current-weather/current-we
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    RouterModule,
     StoreModule.forFeature('home', homeReducer),
     EffectsModule.forFeature([HomeEffects]),
     ComponentsModule,
@@ -22,6 +25,7 @@ import { CurrentWeatherComponent } from './components/current-weather/current-we
   declarations: [
     HomePage,
     CurrentWeatherComponent,
+    UnitSelectorComponent,
   ]
 })
 export class HomeModule { }

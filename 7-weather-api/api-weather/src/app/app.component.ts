@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
 
 @Component({
   selector: 'erm-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'api-weather';
+  constructor() {
+    moment.locale('pt-br');
+  }
 }
