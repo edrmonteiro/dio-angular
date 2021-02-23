@@ -22,7 +22,9 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## in order to run the project, fill apiKey at environment.ts file with your key from https://openweathermap.org 
+## API Key 
+
+in order to run the project, fill apiKey at environment.ts file with your key from https://openweathermap.org 
 
 ## Further help
 
