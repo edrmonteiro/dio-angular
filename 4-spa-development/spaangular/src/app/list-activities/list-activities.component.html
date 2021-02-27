@@ -1,1 +1,31 @@
-<p>list-activities works!</p>
+<h2>Lista de Atividades</h2>
+
+<table mat-table [dataSource]="listActivities" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <ng-container matColumnDef="Person">
+    <th mat-header-cell *matHeaderCellDef>Pessoa</th>
+    <td mat-cell *matCellDef="let element">{{ element.person }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Activity">
+    <th mat-header-cell *matHeaderCellDef>Atividade</th>
+    <td mat-cell *matCellDef="let element">{{ element.activity }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Date">
+    <th mat-header-cell *matHeaderCellDef>Data</th>
+    <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Duration in minutes">
+    <th mat-header-cell *matHeaderCellDef>Duração da Atividade</th>
+    <td mat-cell *matCellDef="let element">{{ element.durationMinutes }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<erm-add-activities></erm-add-activities>

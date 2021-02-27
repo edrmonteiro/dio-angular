@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { ListActivitiesComponent } from './list-activities/list-activities.component';
 import { AddActivitiesComponent } from './add-activities/add-activities.component';
 import { RankComponent } from './rank/rank.component';
+import { MaterialModule } from './shared/material/material.module';
 
 @NgModule({
   declarations: [
@@ -15,14 +16,15 @@ import { RankComponent } from './rank/rank.component';
     HomeComponent,
     ListActivitiesComponent,
     AddActivitiesComponent,
-    RankComponent
+    RankComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
