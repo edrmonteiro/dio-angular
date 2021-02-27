@@ -1,0 +1,15 @@
+<table>
+  <thead>
+    <tr>
+      <th>index</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; trackBy: trackById">
+      <!-- <tr *ngFor="let item of items; let i=index" > -->
+      <td>
+        {{ user.id }}
+      </td>
+    </tr>
+  </tbody>
+</table>
