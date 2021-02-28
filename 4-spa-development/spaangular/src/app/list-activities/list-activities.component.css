@@ -20,3 +20,9 @@ table {
 .form-container .mat-radio-button {
   margin: 0 12px;
 }
+th.mat-header-cell {
+  text-align: center !important;
+}
+td.mat-cell {
+  text-align: center !important;
+}

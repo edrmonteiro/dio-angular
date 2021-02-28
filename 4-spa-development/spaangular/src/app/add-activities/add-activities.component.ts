@@ -1,11 +1,17 @@
-import { Component, Input, OnChanges, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
-import * as EventEmitter from 'events';
 import { Activity } from '../shared/model/activity';
 
 @Component({
@@ -19,7 +25,7 @@ export class AddActivitiesComponent implements OnInit, OnChanges {
   //date:Date;
   date: FormControl;
   @Input() activity: Activity;
-  @Output() returnActivity = new EventEmitter<string>();
+  @Output() returnActivity = new EventEmitter();
 
   constructor(private fb: FormBuilder) {}
 
@@ -62,23 +68,18 @@ export class AddActivitiesComponent implements OnInit, OnChanges {
   resetForm(): void {
     this.register.reset();
   }
-  submit(): void {
+  submit(add: boolean): void {
     this.register.markAllAsTouched();
     if (this.register.invalid) {
       return;
     }
 
     const newActivity = this.register.getRawValue() as Activity;
-    this.save(newActivity);
+    this.save(add, newActivity);
   }
-  save(newActivity: Activity): void {
-    //console.log(newActivity);
-    this.returnActivity.emit(JSON.stringify(newActivity));
-    // this.respostaFamilia.emit({
-    //   person: 'Enzo',
-    //   activity: 'Jogar vídeo game',
-    //   date: '2020-10-8',
-    //   durationMinutes: 600,
-    // });
+  save(add: boolean, newActivity: Activity): void {
+    this.returnActivity.emit(
+      JSON.stringify({ new: add, activity: newActivity })
+    );
   }
 }

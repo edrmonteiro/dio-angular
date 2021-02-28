@@ -1,6 +1,6 @@
 <div class="form-container">
   <mat-toolbar class="app-title">Cadastrar/Editar uma atividade</mat-toolbar>
-  <form [formGroup]="register" (ngSubmit)="submit()" (ngReset)="resetForm()">
+  <form [formGroup]="register" (ngReset)="resetForm()">
     <mat-card-content>
       <mat-form-field appearance="fill">
         <input matInput placeholder="Nome" formControlName="person" required />
@@ -40,7 +40,22 @@
     </mat-card-content>
 
     <mat-card-actions>
-      <button type="submit" color="primary" mat-raised-button>Salvar</button>
+      <button
+        type="submit"
+        (click)="submit(false)"
+        color="accent"
+        mat-raised-button
+      >
+        Salvar
+      </button>
+      <button
+        type="submit"
+        (click)="submit(true)"
+        color="primary"
+        mat-raised-button
+      >
+        Adicionar
+      </button>
       <button type="reset" color="basic" mat-raised-button>Limpar</button>
     </mat-card-actions>
   </form>

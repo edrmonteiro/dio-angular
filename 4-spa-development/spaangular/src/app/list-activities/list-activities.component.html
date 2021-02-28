@@ -1,5 +1,6 @@
+<erm-rank [listActivities]="listActivities"></erm-rank>
+<br />
 <h2>Lista de Atividades</h2>
-
 <table mat-table [dataSource]="listActivities" class="mat-elevation-z8">
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
@@ -16,7 +17,9 @@
 
   <ng-container matColumnDef="Date">
     <th mat-header-cell *matHeaderCellDef>Data</th>
-    <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+    <td mat-cell *matCellDef="let element">
+      {{ element.date | date: "dd/MM/yyyy" }}
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="Duration in minutes">
