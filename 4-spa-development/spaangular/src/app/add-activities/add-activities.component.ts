@@ -1,5 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, OnChanges, OnInit, Output } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import * as EventEmitter from 'events';
 import { Activity } from '../shared/model/activity';
 
 @Component({
@@ -7,24 +13,34 @@ import { Activity } from '../shared/model/activity';
   templateUrl: './add-activities.component.html',
   styleUrls: ['./add-activities.component.css'],
 })
-export class AddActivitiesComponent implements OnInit {
+export class AddActivitiesComponent implements OnInit, OnChanges {
   register: FormGroup;
-  action: Array<string>;
+  actions: Array<string>;
+  //date:Date;
+  date: FormControl;
   @Input() activity: Activity;
+  @Output() returnActivity = new EventEmitter<string>();
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.action = [
+    this.actions = [
       'Pular corda',
       'Estudar Angular',
       'Jogar vídeo game',
       'Jogar baralho',
       'Assistir Netflix',
     ];
+    this.date = new FormControl(new Date());
+    this.createForm(this.activity);
+  }
+  ngOnChanges() {
+    //this.date = this.activity.date;
+    this.date = new FormControl(new Date(this.activity.date));
+    this.createForm(this.activity);
   }
 
-  private criarFormulario(act: Activity): void {
+  private createForm(act: Activity): void {
     this.register = this.fb.group({
       person: [
         act.person,
@@ -41,5 +57,28 @@ export class AddActivitiesComponent implements OnInit {
         [Validators.required, Validators.min(0), Validators.max(10000)],
       ],
     });
+  }
+
+  resetForm(): void {
+    this.register.reset();
+  }
+  submit(): void {
+    this.register.markAllAsTouched();
+    if (this.register.invalid) {
+      return;
+    }
+
+    const newActivity = this.register.getRawValue() as Activity;
+    this.save(newActivity);
+  }
+  save(newActivity: Activity): void {
+    //console.log(newActivity);
+    this.returnActivity.emit(JSON.stringify(newActivity));
+    // this.respostaFamilia.emit({
+    //   person: 'Enzo',
+    //   activity: 'Jogar vídeo game',
+    //   date: '2020-10-8',
+    //   durationMinutes: 600,
+    // });
   }
 }

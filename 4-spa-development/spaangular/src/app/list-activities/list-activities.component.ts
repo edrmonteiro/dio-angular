@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnChanges, OnInit } from '@angular/core';
 import { Activity } from '../shared/model/activity';
 
 @Component({
@@ -6,19 +6,42 @@ import { Activity } from '../shared/model/activity';
   templateUrl: './list-activities.component.html',
   styleUrls: ['./list-activities.component.css'],
 })
-export class ListActivitiesComponent implements OnInit {
+export class ListActivitiesComponent
+  implements OnInit, OnChanges, AfterViewInit {
   listActivities: Activity[] = [];
+  sendActivity: Activity = this.emptyActivity();
+  receivedActivity: Activity;
   displayedColumns: string[] = [
     'Person',
     'Activity',
     'Date',
     'Duration in minutes',
+    '-',
   ];
 
   constructor() {}
 
+  emptyActivity(): Activity {
+    let newActivity = {
+      person: '',
+      activity: '',
+      date: '',
+      durationMinutes: 0,
+    };
+    return newActivity;
+  }
+  ngOnChanges(): void {
+    console.log('onchange list');
+  }
+
   ngOnInit(): void {
     this.listActivities = [
+      {
+        person: 'Camila',
+        activity: 'Pular corda',
+        date: '2020-04-8',
+        durationMinutes: 60,
+      },
       {
         person: 'Eduardo',
         activity: 'Estudar Angular',
@@ -27,10 +50,20 @@ export class ListActivitiesComponent implements OnInit {
       },
       {
         person: 'Enzo',
-        activity: 'Jogar Vídeo Game',
+        activity: 'Jogar vídeo game',
         date: '2020-10-8',
         durationMinutes: 600,
       },
     ];
+  }
+  edit(element: Activity): void {
+    this.sendActivity = element;
+  }
+  addItem(event: string) {
+    console.log('pai');
+    console.log(event);
+  }
+  ngAfterViewInit() {
+    console.log('ngAfterViewInit');
   }
 }

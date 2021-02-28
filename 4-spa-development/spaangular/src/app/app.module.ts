@@ -9,6 +9,8 @@ import { ListActivitiesComponent } from './list-activities/list-activities.compo
 import { AddActivitiesComponent } from './add-activities/add-activities.component';
 import { RankComponent } from './rank/rank.component';
 import { MaterialModule } from './shared/material/material.module';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,8 +25,9 @@ import { MaterialModule } from './shared/material/material.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
