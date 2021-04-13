@@ -2,7 +2,6 @@ define('Cadastro', () => {
     const user = 'user' + (new Date()).getTime()
     const pass = 'pass' + (new Date()).getTime()
     it ('Sucesso', () => {
-
         //cypress recorder extension
         // cy.visit('http://localhost:4200/');
         // cy.get('.home-page').click();
@@ -20,7 +19,16 @@ define('Cadastro', () => {
         cy.get('[formcontrolname=email]').type(user + '@email.com')
         cy.get('[formcontrolname=password]').type(pass)
         cy.get('.btn').click()
-        cy.get('.ng-dirty:nth-child(4)').submit()
+        cy.contains('.nav-item:nth-child(4) >  .nav-link', user)
+            .should('be.visible')
+        // cy.get('.ng-dirty:nth-child(4)').submit()
+    })
+    it ('Usuário já existe', () => {
+        cy.visit('http://localhost:4200/register')
+        cy.get('[formcontrolname=username]').type(user)
+        cy.get('[formcontrolname=email]').type(user + '@email.com')
+        cy.get('[formcontrolname=password]').type(pass)
+        cy.get('.btn').click()
         cy.location('pathname').should ('equal', '/register')
         cy.get('.error-messages > li:nth-child(1)')
             .should('not.be.empty')
