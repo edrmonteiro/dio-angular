@@ -32,8 +32,11 @@ define('Cadastro', () => {
         cy.location('pathname').should ('equal', '/register')
         cy.get('.error-messages > li:nth-child(1)')
             .should('not.be.empty')
-
     })
+
+
+
+    
 })
 
 
