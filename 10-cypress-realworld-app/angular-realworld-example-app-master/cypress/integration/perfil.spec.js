@@ -9,9 +9,5 @@ define('Profile', () => {
         cy.get('[formcontrolname="password"').type('12345678')
         cy.contains('Update Settings').click()
     })
-
-
-
-    
 })
 
