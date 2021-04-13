@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod  --base-href ./ && cp CNAME dist/CNAME",
     "test": "ng test",
-    "lint": "ng lint --force"
+    "lint": "ng lint --force",
+    "e2e": "ng e2e"
   },
   "pre-commit": [
     "lint"
